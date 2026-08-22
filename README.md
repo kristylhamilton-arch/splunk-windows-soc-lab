@@ -41,3 +41,6 @@ I created the following SPL query to identify accounts with multiple failed auth
 index=* source="WinEventLog:Security" EventCode=4625
 | stats count by Account_Name
 | where count >= 5
+
+## Detection Result
+The detection identified repeated failed authentication attempts using Windows Security Event ID 4625. The SPL query grouped failed logins by account and flagged accounts with five or more failures. The scheduled detection successfully identified 10 failed authentication events during the five-minute monitoring window, confirming that the detection logic worked as intended.
