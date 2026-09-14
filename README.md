@@ -1,49 +1,81 @@
-# Windows SOC Lab – Splunk Enterprise
+# Splunk SIEM Security Monitoring & Incident Analysis Lab
 
 ## Project Overview
 
-This project demonstrates a home SOC/SIEM environment built using Splunk Enterprise and Windows 11. The lab was designed to collect Windows Security Event Logs, identify suspicious authentication activity, create detection logic using SPL, and investigate triggered security alerts.
+This project demonstrates hands-on experience using Splunk Enterprise
+as a Security Information and Event Management (SIEM) platform.
 
-## Objective
+I created a simulated security monitoring environment to analyze
+security events, investigate potentially suspicious activity, create
+alerts, and document findings.
 
-Build a home SOC/SIEM environment capable of:
+## Objectives
 
-- Collecting Windows Security Event Logs
-- Monitoring authentication activity
-- Detecting repeated failed login attempts
-- Creating automated security alerts
-- Investigating authentication events using Splunk
+- Configure a Splunk SIEM environment
+- Ingest and analyze security event data
+- Create searches to identify security-related activity
+- Create dashboards and reports for security monitoring
+- Configure alerts based on defined security conditions
+- Review alert trigger activity
+- Investigate potentially suspicious events
+- Document findings and investigation procedures
 
-## Lab Environment
+## Tools & Technologies
 
-- Windows 11
-- Splunk Enterprise 10.4.2
-- Windows Security Event Logs
-- Local Windows test accounts
+- Splunk Enterprise
+- Windows
+- Windows Event Logs
+- SIEM
+- Security Monitoring
+- Log Analysis
+- Alerting
+- Incident Analysis
 
-## What I Configured
+## Skills Demonstrated
 
-- Installed and configured Splunk Enterprise
-- Configured ingestion of the Windows Security Event Log
-- Investigated Windows Event IDs 4624 and 4625
-- Generated controlled failed-login activity
-- Used SPL to identify repeated authentication failures
-- Created a scheduled detection for multiple failed login attempts
-- Successfully triggered and investigated the alert
+- SIEM monitoring
+- Security event analysis
+- Log analysis
+- Alert creation
+- Dashboard creation
+- Incident investigation
+- Security documentation
+- Windows event analysis
 
-## Detection
+## Lab Process
 
-Windows Security Event ID **4625** represents a failed account logon.
+### 1. SIEM Environment Setup
 
-I created the following SPL query to identify accounts with multiple failed authentication attempts:
+Installed and configured Splunk Enterprise in a Windows lab
+environment and configured security event data for analysis.
 
-```spl
-index=* source="WinEventLog:Security" EventCode=4625
-| stats count by Account_Name
-| where count >= 5
-```
+### 2. Security Event Analysis
 
-## Detection Result
-The detection identified repeated failed authentication attempts using Windows Security Event ID 4625. The SPL query grouped failed logins by account and flagged accounts with five or more failures. The scheduled detection successfully identified 10 failed authentication events during the five-minute monitoring window, confirming that the detection logic worked as intended.
-### Failed Login Detection Triggered
-![Splunk failed login detection triggered](screenshots/05-failed-login-detection-triggered.png)
+Used Splunk searches to analyze security events and identify activity
+requiring further investigation.
+
+### 3. Dashboards and Reports
+
+Created dashboards and reports to organize and monitor security data.
+
+### 4. Security Alert
+
+Configured an alert based on defined security conditions and reviewed
+trigger activity.
+
+### 5. Investigation
+
+Analyzed event data to distinguish normal activity from potentially
+suspicious behavior.
+
+## Key Takeaways
+
+This project strengthened my understanding of SIEM operations,
+security monitoring, event analysis, alerting, and incident
+investigation. It also provided practical experience documenting
+security findings and communicating technical information.
+
+## Screenshots
+
+Screenshots documenting the configuration, searches, dashboards,
+alerts, and investigation process are included in this repository.
